@@ -1,0 +1,59 @@
+{
+  "name": "crmapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.4",
+    "bootstrap": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "font-awesome": "^4.7.0",
+    "input-hook": "^2.5.0",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.3",
+    "react-data-table-component": "^7.0.0",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-number-format": "^4.4.4",
+    "react-overflow-indicator": "^0.2.1",
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-router": "^5.2.1",
+    "react-router-config": "^5.1.1",
+    "react-scripts": "4.0.3",
+    "reactstrap": "^8.10.0",
+    "styled-components": "^5.3.0",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "env-cmd -f envs/.env.dev react-scripts build",
+    "prod": "env-cmd -f envs/.env.prod react-scripts build",
+    "staging": "env-cmd -f envs/.env.staging react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:97/"
+}

@@ -1,4 +1,4 @@
-import React, { Component, useContext, createContext, useState } from "react";
+import React, { Component, useContext, createContext, setState, useState } from "react";
 import API_URL from '../../utils/env.js';
 import axios from 'axios';
 import {
@@ -32,6 +32,7 @@ export default function Login() {
         });
     };
 
+    const [gt, setGt] = useState(null);
     const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
@@ -88,30 +89,30 @@ export default function Login() {
                         history.replace(from);
                         setUser("user");
 
+
                     } else if (response.status != 200) {
                         let ssnotif = 'username dan password salah'
                         setValues((values) => ({
                             ...values,
                             notif: ssnotif,
                         }));
+                        // gt = ssnotif;
+                        setGt('username salah woy');
                     }
                 })
                 .catch(function (error) {
-                    // alert('username dan password salah');
-                    // console.log(error);
+                    setGt('username salah woy');
                 });
         }
-    }
+        console.log('apaaan' + gt);
 
+    }
 
     return (<>
         <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
         <link crossorigin href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet" />
 
         <div className="container text-center">
-
-            {notif}
 
             <form className="form-signin" onSubmit={LoginAction} >
                 <img className="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
@@ -132,6 +133,7 @@ export default function Login() {
                 <button typeof="submit" className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
             </form>
+            {gt}
         </div>
     </>
     );

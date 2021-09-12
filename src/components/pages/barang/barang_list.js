@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React from "react";
 import ReactDOM from "react-dom";
-import API_URL from '../../utils/env.js';
+import API_URL from '../../../utils/env.js';
 import DataTable from 'react-data-table-component';
-import Header from '../templates/templates';
+import Header from '../../templates/templates';
 import { Link } from 'react-router-dom';
 
 
-class Dashbord extends React.Component {
+class ListBarang extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +39,12 @@ class Dashbord extends React.Component {
     }
 
     render() {
-        const ExpandedComponent = ({ data }) => <button className="btn btn-info">{data.kode}{data.nama}</button>;
+        const ExpandedComponent = ({ data }) => {
+            <>
+                <Link to="barang/edit/${row.id}" className="btn btn-primary">Edit </Link>
+                <Link to="barang/delete/${row.id}" className="btn btn-danger">Delete</Link>
+            </>
+        };
 
         const columns = [
             {
@@ -61,6 +66,17 @@ class Dashbord extends React.Component {
             {
                 name: 'Harga Beli',
                 selector: row => row.harga_jual,
+            },
+            {
+                name: 'Action',
+                button: true,
+                Width: '200',
+                cell: row => (
+                    <>
+                        <Link to={row.id} className="btn btn-primary btn-sm"><i className="fa fa-pencil"></i></Link>
+                        <Link to={row.id} className="btn btn-danger btn-sm"><i className="fa fa-trash"></i></Link>
+                    </>
+                ),
             },
         ];
         const { error, isLoaded, items } = this.state;
@@ -102,7 +118,7 @@ class Dashbord extends React.Component {
                                 <div className="col-md-12">
                                     <div className="card">
                                         <div className="card-header">
-                                            <h4 className="card-title">Basic</h4>
+                                            <h4 className="card-title">Data Master Barang</h4>
                                         </div>
                                         <div className="card-body">
                                             <div className="table-responsive">
@@ -110,8 +126,10 @@ class Dashbord extends React.Component {
                                                 <DataTable
                                                     columns={columns}
                                                     data={data}
+                                                    pagination
                                                     expandableRows
                                                     expandableRowsComponent={ExpandedComponent}
+
                                                 />
                                             </div>
                                         </div>
@@ -128,4 +146,4 @@ class Dashbord extends React.Component {
 }
 
 
-export default Dashbord;
+export default ListBarang;

@@ -66,7 +66,7 @@ class Barangform extends React.Component {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                            <h3>Barang</h3>    
+                                            <h3>Barang</h3>
 
                                             <Form>
                                                 <FormGroup row>
@@ -80,9 +80,9 @@ class Barangform extends React.Component {
                                                             }}
                                                             size="sm"
                                                             type="text"
-                                                            name="item_name"
+                                                            name="kode_barang"
                                                             // value={this.state.item.item_name}
-                                                            placeholder="Item name"
+                                                            placeholder="Kode Barang"
                                                             onChange={(event) => {
                                                                 const { target } = event;
                                                                 this.setState({
@@ -107,7 +107,7 @@ class Barangform extends React.Component {
                                                             }}
                                                             size="sm"
                                                             type="text"
-                                                            name="item_name"
+                                                            name="nama_barang"
                                                             // value={this.state.item.item_name}
                                                             placeholder="Item name"
                                                             onChange={(event) => {
@@ -134,7 +134,7 @@ class Barangform extends React.Component {
                                                             }}
                                                             size="sm"
                                                             type="text"
-                                                            name="item_name"
+                                                            name="stok"
                                                             // value={this.state.item.item_name}
                                                             placeholder="Item name"
                                                             onChange={(event) => {
@@ -161,9 +161,9 @@ class Barangform extends React.Component {
                                                             }}
                                                             size="sm"
                                                             type="text"
-                                                            name="item_name"
+                                                            name="harga_jual"
                                                             // value={this.state.item.item_name}
-                                                            placeholder="Item name"
+                                                            placeholder="Harga Jual"
                                                             onChange={(event) => {
                                                                 const { target } = event;
                                                                 this.setState({
@@ -191,7 +191,7 @@ class Barangform extends React.Component {
                                                             type="text"
                                                             name="item_name"
                                                             // value={this.state.item.item_name}
-                                                            placeholder="Item name"
+                                                            placeholder="Harga Beli"
                                                             onChange={(event) => {
                                                                 const { target } = event;
                                                                 this.setState({
@@ -205,22 +205,14 @@ class Barangform extends React.Component {
                                                         <FormFeedback tooltip>Item name is required</FormFeedback>
                                                     </Col>
                                                 </FormGroup>
-                                            
-                                             
-                                           
-                                             
                                             </Form>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </>
-
             } />
         )
     }

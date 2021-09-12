@@ -41,7 +41,7 @@ class Header extends React.Component {
     };
 
     render() {
-         return (
+        return (
 
             <>
                 <Helmet>
@@ -304,10 +304,10 @@ class Header extends React.Component {
                                 </div>
                                 <ul className="nav nav-primary">
                                     <li className="nav-item active">
-                                        <Link  to="/dashboard">
+                                        <Link to="/dashboard">
                                             <i className="fa fa-home" />
                                             <p>Dashboard</p>
-                                             
+
                                             {/* {console.log(localStorage.getItem('user'))} */}
                                         </Link>
                                         <div className="collapse" id="dashboard">
@@ -364,33 +364,65 @@ class Header extends React.Component {
                                         <span className="sidebar-mini-icon">
                                             <i className="fa fa-ellipsis-h" />
                                         </span>
-                                        <h4 className="text-section">Components</h4>
+                                        <h4 className="text-section">Master data</h4>
                                     </li>
 
                                     <li className="nav-item">
-                                        <Link to="/user">
+                                        <Link to="/suplier">
                                             <i className="fa fa-th-list" />
-                                            <p>Data User</p>
+                                            <p>Data Supplier</p>
                                             <span className="badge badge-count">4</span>
                                         </Link>
                                     </li>
 
                                     <li className="nav-item">
-                                        <Link to="/parameter">
+                                        <Link to="/barang">
                                             <i className="fa fa-file" />
-                                            <p>Parameter Program</p>
+                                            <p>Master data barang</p>
                                             <span className="badge badge-count">5</span>
                                         </Link>
                                     </li>
 
+
+                                    <li className="nav-item">
+                                        <Link to="/kategori">
+                                            <i className="fa fa-cube" />
+                                            <p>Master Kategory</p>
+                                        </Link>
+                                    </li>
+
                                     <li className="nav-item">
                                         <Link to="/user">
                                             <i className="fa fa-th-list" />
-                                            <p>Boards</p>
+                                            <p>Transaksi </p>
                                             <span className="badge badge-count">4</span>
                                         </Link>
                                     </li>
 
+
+                                    <li className="nav-item">
+                                        <Link to="/user">
+                                            <i className="fa fa-th-list" />
+                                            <p>Purchase </p>
+                                            <span className="badge badge-count">4</span>
+                                        </Link>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <Link to="/user">
+                                            <i className="fa fa-th-list" />
+                                            <p>Report </p>
+                                            <span className="badge badge-count">4</span>
+                                        </Link>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <Link to="/akuntansi">
+                                            <i className="fa fa-th-list" />
+                                            <p>Accouting </p>
+                                            <span className="badge badge-count">4</span>
+                                        </Link>
+                                    </li> 
 
                                 </ul>
                             </div>

@@ -28,6 +28,8 @@ class Barangform extends React.Component {
         }
     }
 
+    
+
 
 
     render() {

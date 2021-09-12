@@ -38,6 +38,26 @@ class ListBarang extends React.Component {
             );
     }
 
+
+    // handle onclick function
+    Editdata = (id) => {
+        let { from } = this.props.location.state || { from: { pathname: `/kategori/edit/${id}` } };
+        this.props.history.replace(from);
+    }
+
+    Hapusdata = (id) => {
+        const token = localStorage.getItem("token");
+        var config = {
+            method: 'DELETE',
+            url: API_URL() + `kategori/delete/${id}`,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            data: { "id": id }
+        };
+    }
+
     render() {
         const ExpandedComponent = ({ data }) => {
             <>
@@ -73,8 +93,8 @@ class ListBarang extends React.Component {
                 Width: '200',
                 cell: row => (
                     <>
-                        <Link to={row.id} className="btn btn-primary btn-sm"><i className="fa fa-pencil"></i></Link>
-                        <Link to={row.id} className="btn btn-danger btn-sm"><i className="fa fa-trash"></i></Link>
+                        <button className="btn btn-primary btn-sm" onClick={() => { this.Editdata(row.id) }}><i className="fa fa-pencil"></i></button>
+                        <button className="btn btn-danger btn-sm" onClick={() => { this.Hapusdata(row.id) }}><i className="fa fa-trash"></i></button>
                     </>
                 ),
             },

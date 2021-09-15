@@ -83,11 +83,11 @@ class ListBarang extends React.Component {
         const columns = [
             {
                 name: 'Kode Barang',
-                selector: row => row.nama,
+                selector: row => row.kode,
             },
             {
                 name: 'Nama Barang',
-                selector: row => row.kode,
+                selector: row => row.nama,
             },
             {
                 name: 'Stok',

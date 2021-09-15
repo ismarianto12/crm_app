@@ -13,10 +13,40 @@ class ListBarang extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            ket: []
         };
     }
-    componentDidMount() {
+
+    // handle onclick function
+    Editdata = (id) => {
+        let { from } = this.props.location.state || { from: { pathname: `/barang/edit/${id}` } };
+        this.props.history.replace(from);
+    }
+
+    Hapusdata = (id) => {
+        console.log(id);
+        const token = localStorage.getItem("token");
+        var config = {
+            method: 'DELETE',
+            url: API_URL() + `barang/delete/${id}`,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            data: { "id": id }
+        };
+        axios(config).then((response) => {
+            this.Refreshdata();
+            console.log(response);
+            this.setState({ ket: 'data berhasil di hapus' })
+
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    Refreshdata = () => {
         const token = localStorage.getItem("token");// JSON.parse(localStorage.getItem('token'));
         let api = API_URL() + 'barang/list';
         fetch(api, { headers: { "Authorization": `Bearer ${token}` } })
@@ -36,26 +66,10 @@ class ListBarang extends React.Component {
                     });
                 }
             );
+
     }
-
-
-    // handle onclick function
-    Editdata = (id) => {
-        let { from } = this.props.location.state || { from: { pathname: `/kategori/edit/${id}` } };
-        this.props.history.replace(from);
-    }
-
-    Hapusdata = (id) => {
-        const token = localStorage.getItem("token");
-        var config = {
-            method: 'DELETE',
-            url: API_URL() + `kategori/delete/${id}`,
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            data: { "id": id }
-        };
+    componentDidMount() {
+        this.Refreshdata();
     }
 
     render() {
@@ -107,6 +121,8 @@ class ListBarang extends React.Component {
             return <div>Error: {error.message}</div>;
         } else {
             console.log(this.state.items);
+
+
             return (
                 <Header title={'Dashboard'} container={
                     <>
@@ -141,6 +157,7 @@ class ListBarang extends React.Component {
                                             <h4 className="card-title">Data Master Barang</h4>
                                         </div>
                                         <div className="card-body">
+                                            {this.state.ket}
                                             <div className="table-responsive">
                                                 <Link to="barang/add" class="btn btn-secondary">Tambah barang</Link>
                                                 <DataTable

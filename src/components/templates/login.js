@@ -1,6 +1,11 @@
 import React, { Component, useContext, createContext, setState, useState } from "react";
 import API_URL from '../../utils/env.js';
+import 'bootstrap';
+import 'font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
+// import parse from 'html-react-parser'
+import Parser from 'html-react-parser/dist/html-react-parser'
+
 import {
     useHistory,
     useLocation
@@ -32,7 +37,7 @@ export default function Login() {
         });
     };
 
-    const [gt, setGt] = useState(null);
+    const [gt, setGt] = useState('');
     const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
@@ -88,8 +93,6 @@ export default function Login() {
                         let { from } = location.state || { from: { pathname: "/dashboard" } };
                         history.replace(from);
                         setUser("user");
-
-
                     } else if (response.status != 200) {
                         let ssnotif = 'username dan password salah'
                         setValues((values) => ({
@@ -97,11 +100,11 @@ export default function Login() {
                             notif: ssnotif,
                         }));
                         // gt = ssnotif;
-                        setGt('username salah woy');
+                        setGt('<div class="alert alert-danger">Maaf username dan password yang anda masukan tidak sesuai.</div>');
                     }
                 })
                 .catch(function (error) {
-                    setGt('username salah woy');
+                    setGt('<div class="alert alert-danger">Maaf username dan password yang anda masukan tidak sesuai.</div>');
                 });
         }
         console.log('apaaan' + gt);
@@ -109,31 +112,27 @@ export default function Login() {
     }
 
     return (<>
-        <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link crossorigin href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet" />
 
         <div className="container text-center">
 
-            <form className="form-signin" onSubmit={LoginAction} >
-                <img className="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
+            <h2><i className="fa fa-cubes"></i></h2>
+
+            <form className="form-horizontal" onSubmit={LoginAction} >
                 <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label for="inputEmail" className="sr-only">Email address</label>
-                <input type="text" id="inputEmail" name="username" className="form-control" placeholder="Email address" onChange={Husername} value={values.username} />
-                {LoginAction && values.username && <span id='email-error'>Please enter an email address</span>}
-
-                <label for="inputPassword" className="sr-only">Password</label>
-                <input type="password" id="inputPassword" name="password" className="form-control" placeholder="Password" onChange={Hpassword} value={values.password} />
-                {LoginAction && values.password && <span id='email-error'>Please password </span>}
-
-                <div className="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me" /> Remember me
-                    </label>
+                <div class="form-group row">
+                    <label for="inputEmail" className="sr-only">Username</label>
+                    <input type="text" id="inputEmail" name="username" className="form-control" placeholder="Email address" onChange={Husername} value={values.username} />
                 </div>
-                <button typeof="submit" className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <div class="form-group row">
+                    <label for="inputPassword" className="sr-only">Password</label>
+                    <input type="password" id="inputPassword" name="password" className="form-control" placeholder="Password" onChange={Hpassword} value={values.password} />
+                </div>
+
+                <button typeof="submit" className="btn btn-lg btn-primary btn-block" type="submit"><i className="fa fa-user"></i>Sign in</button>
                 <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
             </form>
-            {gt}
+            {Parser(gt)}
         </div>
     </>
     );

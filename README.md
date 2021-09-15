@@ -8,4 +8,4 @@ In the project directory, you can run:
 
 ### `npm start`
 
-![alt text](/asdasd.png)
+![alt text](https://github.com/ismarianto12/crm_app/blob/main/public/asdasd.png)

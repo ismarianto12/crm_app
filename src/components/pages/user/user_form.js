@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
+import API_URL from '../../../utils/env';
 import Header from '../../templates/templates';
 
 class Userform extends React.Component {
@@ -22,21 +24,86 @@ class Userform extends React.Component {
 
     }
 
+    Redirecthandle = (par) => {
+        let { from } = this.location.state || {
+            history: { pathname: `${par}` }
+        };
+        this.props.history.pathname(from);
+    }
+
+
     Handler = (event) => {
+        let token = localStorage.getItem('token');
+
         event.preventDefault();
-        const data = {
+        let data = {
             email: this.state.valueform.email,
             username: this.state.valueform.username,
             password: this.state.valueform.password,
-            ulangipassword: this.state.valueform.ulangipassword
+            ulangipassword: this.state.valueform.ulangipassword,
+            nama: this.state.valueform.nama
         }
-        if (data.password !== data.ulangipassword) {
+        console.log('..' + data.email);
+        if (data.email === "") {
+            this.setState({
+                notifikasi: "Email tidak boleh kosong",
+            });
+        } else if (data.username === '') {
+            this.setState({
+                notifikasi: "Username tidak boleh kosong",
+            });
+        } else if (data.password !== data.ulangipassword) {
+            this.setState({
+                notifikasi: "Password yang anda entrikan tidak sama silahkan ulangi ",
+            });
+
+        } else if (data.password !== data.ulangipassword) {
             this.setState({
                 notifikasi: "Password yang anda entrikan tidak sama silahkan ulangi ",
             });
         } else {
             this.setState({
                 notifikasi: "",
+            });
+        }
+
+        const id = this.props.match.params.id;
+        if (id) {
+            const config = {
+                method: "put",
+                url: API_URL() + 'user/update/' + id,
+                data: data,
+                header: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }
+            axios(config).then((event) => {
+                this.setState({
+                    notifikasi: "Data berhasil di simpan",
+                });
+                this.Redirecthandle('user/list');
+            }).catch((rest) => {
+                console.log(rest);
+            });
+        } else {
+            let config = {
+                method: "PUT",
+                url: API_URL() + 'user/add',
+                data: data,
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-type": 'application/json'
+                }
+            }
+            axios(config).then((response) => {
+                console.log(response);
+                this.setState({
+                    notifikasi: "Data berhasil di simpan",
+                });
+                this.Redirecthandle('user/list');
+            }).catch((rest) => {
+                console.log(rest);
             });
         }
     }
@@ -83,7 +150,7 @@ class Userform extends React.Component {
                                             <div className="form-group row">
                                                 <lable className="col-md-2">Username</lable>
                                                 <div className="col-md-4">
-                                                    <input name="username" className="form-control" placeholder="Kode Suplier .."
+                                                    <input name="username" className="form-control" value={this.state.valueform.username} placeholder="Kode Suplier .."
                                                         onChange={(event) => {
                                                             const { target } = event;
                                                             this.setState({
@@ -97,7 +164,7 @@ class Userform extends React.Component {
                                                 </div>
                                                 <lable className="col-md-2">Email</lable>
                                                 <div className="col-md-4">
-                                                    <input name="email" className="form-control" placeholder="Email Suplier .."
+                                                    <input name="email" className="form-control" value={this.state.valueform.email} placeholder="Email Suplier .."
                                                         onChange={(event) => {
                                                             const { target } = event;
                                                             this.setState({
@@ -141,6 +208,20 @@ class Userform extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="form-group row">
+                                                <lable className="col-md-2">Nama</lable>
+                                                <div className="col-md-4">
+                                                    <input name="nama" className="form-control" placeholder="Nama user .."
+                                                        onChange={(event) => {
+                                                            const { target } = event;
+                                                            this.setState({
+                                                                valueform: {
+                                                                    ...this.state.valueform,
+                                                                    nama: target.value,
+                                                                }
+                                                            })
+                                                        }}
+                                                    />
+                                                </div>
                                                 <lable className="col-md-2">Level Akses</lable>
                                                 <div className="col-md-4">
                                                     <select className="form-control">

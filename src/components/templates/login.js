@@ -13,35 +13,17 @@ import {
     useHistory,
     useLocation
 } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { authenticated } from '../../store/index';
 
 
 
 export default function Login() {
     let history = useHistory();
     let location = useLocation();
-    let notif = '';
-
-    const fakeAuth = {
-        isAuthenticated: false,
-        signin(cb) {
-            fakeAuth.isAuthenticated = true;
-            setTimeout(cb, 100); // fake async
-        },
-        signout(cb) {
-            fakeAuth.isAuthenticated = false;
-            setTimeout(cb, 100);
-        }
-    };
-
-    const signout = cb => {
-        return fakeAuth.signout(() => {
-            setUser(null);
-            cb();
-        });
-    };
+    const setAuth = useSetRecoilState(authenticated);
 
     const [gt, setGt] = useState('');
-    const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
         username: '',
@@ -68,10 +50,13 @@ export default function Login() {
             setGt('<div class="alert alert-danger">Username dan password wajib di isi</div>');
         } else {
             setGt('<div class="alert alert-info">Proses Login ....</div>');
-
-
             var ggusername = values.username;
             var ggpassword = values.password;
+
+            const userdata = {
+                username: values.username,
+                password: values.username
+            }
 
             let api = API_URL() + 'api/login';
 
@@ -79,13 +64,7 @@ export default function Login() {
                 "username": ggusername,
                 "password": ggpassword
             });
-            var config = {
-                method: 'post',
-                url: api,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            };
+
 
             axios.post(api, {
                 "username": ggusername,
@@ -97,7 +76,7 @@ export default function Login() {
                         localStorage.setItem('username', ggusername);
                         let { from } = location.state || { from: { pathname: "/dashboard" } };
                         history.replace(from);
-                        setUser("user");
+                        setAuth(userdata);
                     } else if (response.status != 200) {
                         let ssnotif = 'username dan password salah'
                         setValues((values) => ({
@@ -107,6 +86,7 @@ export default function Login() {
                         // gt = ssnotif;
                         setGt('<div class="alert alert-danger">Maaf username dan password yang anda masukan tidak sesuai.</div>');
                     }
+                  
                 })
                 .catch(function (error) {
                     setGt('<div class="alert alert-danger">Maaf username dan password yang anda masukan tidak sesuai.</div>');
@@ -135,10 +115,10 @@ export default function Login() {
                                     <p className="text-muted mb-4">Please Login Access App.</p>
                                     <form onSubmit={LoginAction}>
                                         <div className="form-group mb-3">
-                                            <input id="username" type="text" onChange={Husername}  placeholder="Username" required autofocus className="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            <input id="username" type="text" onChange={Husername} placeholder="Username" required autofocus className="form-control rounded-pill border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input id="inputPassword" type="password" onChange={Hpassword}  placeholder="Password" required className="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                            <input id="inputPassword" type="password" onChange={Hpassword} placeholder="Password" required className="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="custom-control custom-checkbox mb-3">
                                             <input id="customCheck1" type="checkbox" defaultChecked className="custom-control-input" />
@@ -159,7 +139,7 @@ export default function Login() {
                     </div>
                 </div>{/* End */}
             </div>
-        </div >
+        </div>
 
     </>
     );

@@ -6,8 +6,6 @@ const authenticated = atom({
         check: false,
         user: { name: "Ismarianto" }
     }
-
 });
 
-
-return { authenticated }
+export { authenticated }

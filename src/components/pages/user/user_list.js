@@ -23,7 +23,6 @@ class Listuser extends React.Component {
 
 
     Editdata = (id) => {
-
         this.setState({ Editdata: true, Addata: false });
         let { from } = this.props.location.state || { from: { pathname: `user/edit/${id}` } }
         this.props.history.replace(from);
@@ -31,12 +30,32 @@ class Listuser extends React.Component {
 
 
     Hapusdata = (id) => {
-        let { url } = this.props.lication.state || { from: { pathname: `user/delete/${id}` } }
-        this.props.history.replace(url);
+        var token = localStorage.getItem('token');
+        console.log(token);
+        let config = {
+            url: API_URL() + `/user/delete/${id}`,
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            data: {
+                'id': id
+            }
+        }
+        axios(config).then((response) => {
+            this.Refreshdata();
+            console.log(response);
+
+        }).catch((err) => {
+            console.log(err);
+        });
+
     }
 
     Refreshdata = () => {
         let token = localStorage.getItem('token');
+        console.log(token);
         let config = {
             url: API_URL() + 'user/list',
             mehtod: "GET",
@@ -62,8 +81,12 @@ class Listuser extends React.Component {
         console.log('fuck' + data);
         const columns = [
             {
-                name: "Kode ",
-                selector: row => row.kode,
+                name: "Username ",
+                selector: row => row.username,
+            },
+            {
+                name: "Email",
+                selector: row => row.email,
             },
             {
                 name: "Nama ",
@@ -119,7 +142,7 @@ class Listuser extends React.Component {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                            <Link to="suplier/add" class="btn btn-secondary btn-sm"><i className="fa fa-add"></i>Tambah data user</Link>
+                                            <Link to="user/add" class="btn btn-secondary btn-sm"><i className="fa fa-add"></i>Tambah data user</Link>
                                             <DataTable
                                                 columns={columns}
                                                 data={data}

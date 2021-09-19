@@ -1,11 +1,14 @@
 import React, { Component, useContext, createContext, setState, useState } from "react";
 import API_URL from '../../utils/env.js';
-import 'bootstrap';
+// import 'bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
+
 // import parse from 'html-react-parser'
 import Parser from 'html-react-parser/dist/html-react-parser'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import {
     useHistory,
     useLocation
@@ -62,8 +65,10 @@ export default function Login() {
     const LoginAction = (e) => {
         e.preventDefault();
         if (values.password === '' || values.username === '') {
-            console.log('username dan password tidak boleh kosong');
+            setGt('<div class="alert alert-danger">Username dan password wajib di isi</div>');
         } else {
+            setGt('<div class="alert alert-info">Proses Login ....</div>');
+
 
             var ggusername = values.username;
             var ggpassword = values.password;
@@ -112,28 +117,50 @@ export default function Login() {
     }
 
     return (<>
-        <link crossorigin href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet" />
 
-        <div className="container text-center">
+        <div className="container-fluid" style={{
+            background: "url('https://accuratebusinesscenter.com/wp-content/uploads/2020/02/Gambar-Laporan-keuangan-perusahaan.jpg')"
+        }}>
+            <div className="row no-gutter">
+                {/* The image half */}
+                <div className="col-md-6 d-none d-md-flex bg-image" />
+                {/* The content half */}
+                <div className="col-md-6 bg-light">
+                    <div className="login d-flex align-items-center py-5">
+                        {/* Demo content*/}
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-10 col-xl-7 mx-auto">
+                                    <b>Customer relationship management</b>
+                                    <p className="text-muted mb-4">Please Login Access App.</p>
+                                    <form onSubmit={LoginAction}>
+                                        <div className="form-group mb-3">
+                                            <input id="username" type="text" onChange={Husername}  placeholder="Username" required autofocus className="form-control rounded-pill border-0 shadow-sm px-4" />
+                                        </div>
+                                        <div className="form-group mb-3">
+                                            <input id="inputPassword" type="password" onChange={Hpassword}  placeholder="Password" required className="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                        </div>
+                                        <div className="custom-control custom-checkbox mb-3">
+                                            <input id="customCheck1" type="checkbox" defaultChecked className="custom-control-input" />
+                                            <label htmlFor="customCheck1" className="custom-control-label">Remember password</label>
+                                        </div>
+                                        <button type="submit" className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign in</button>
+                                        <div className="text-center d-flex justify-content-between mt-4"><p>Developed  by <a href="https://ismarianto12.github.io/" className="font-italic text-muted">
+                                            <u>Ismaraianto</u></a></p></div>
+                                    </form>
 
-            <h2><i className="fa fa-cubes"></i></h2>
+                                    {Parser(gt)}
 
-            <form className="form-horizontal" onSubmit={LoginAction} >
-                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <div class="form-group row">
-                    <label for="inputEmail" className="sr-only">Username</label>
-                    <input type="text" id="inputEmail" name="username" className="form-control" placeholder="Email address" onChange={Husername} value={values.username} />
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" className="sr-only">Password</label>
-                    <input type="password" id="inputPassword" name="password" className="form-control" placeholder="Password" onChange={Hpassword} value={values.password} />
-                </div>
 
-                <button typeof="submit" className="btn btn-lg btn-primary btn-block" type="submit"><i className="fa fa-user"></i>Sign in</button>
-                <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-            </form>
-            {Parser(gt)}
-        </div>
+
+                                </div>
+                            </div>
+                        </div>{/* End */}
+                    </div>
+                </div>{/* End */}
+            </div>
+        </div >
+
     </>
     );
 

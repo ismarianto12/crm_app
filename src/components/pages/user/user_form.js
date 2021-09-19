@@ -7,6 +7,7 @@ class Userform extends React.Component {
         super(props);
         this.state = {
             title: '',
+            notifikasi: '',
             valueform: [],
         }
     }
@@ -26,8 +27,18 @@ class Userform extends React.Component {
         const data = {
             email: this.state.valueform.email,
             username: this.state.valueform.username,
+            password: this.state.valueform.password,
+            ulangipassword: this.state.valueform.ulangipassword
         }
-        console.log(data);
+        if (data.password !== data.ulangipassword) {
+            this.setState({
+                notifikasi: "Password yang anda entrikan tidak sama silahkan ulangi ",
+            });
+        } else {
+            this.setState({
+                notifikasi: "",
+            });
+        }
     }
 
     render() {
@@ -66,6 +77,7 @@ class Userform extends React.Component {
                                         <h4 className="card-title">{this.state.title}</h4>
                                     </div>
                                     <div className="card-body">
+                                        {this.state.notifikasi}
                                         <form onSubmit={this.Handler} className="form-horizontal">
                                             <input type="hidden" name="user_id" value="1" />
                                             <div className="form-group row">
@@ -101,7 +113,7 @@ class Userform extends React.Component {
                                             <div className="form-group row">
                                                 <lable className="col-md-2">Password</lable>
                                                 <div className="col-md-4">
-                                                    <input name="kode" className="form-control" placeholder="Kode Suplier .."
+                                                    <input type="password" name="kode" className="form-control" placeholder="Kode Suplier .."
                                                         onChange={(event) => {
                                                             const { target } = event;
                                                             this.setState({
@@ -115,7 +127,7 @@ class Userform extends React.Component {
                                                 </div>
                                                 <lable className="col-md-2">Ulangi Password</lable>
                                                 <div className="col-md-4">
-                                                    <input name="ulangipassword" className="form-control" placeholder="Kode Suplier .."
+                                                    <input type="password" name="ulangipassword" className="form-control" placeholder="Kode Suplier .."
                                                         onChange={(event) => {
                                                             const { target } = event;
                                                             this.setState({

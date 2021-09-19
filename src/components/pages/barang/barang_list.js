@@ -130,7 +130,7 @@ class ListBarang extends React.Component {
 
                             <div className="row">
                                 <div className="page-header">
-                                    <h4 className="page-title">Data Master Barang</h4>
+                                    <h4 className="page-title">Suplier Barang.</h4>
                                     <ul className="breadcrumbs">
                                         <li className="nav-home">
                                             <a href="#">
@@ -154,26 +154,29 @@ class ListBarang extends React.Component {
                                 <div className="col-md-12">
                                     <div className="card">
                                         <div className="card-header">
-                                            <h4 className="card-title">Data Master Barang</h4>
+                                            <h4 className="card-title">Master data Suplier</h4>
                                         </div>
                                         <div className="card-body">
-                                            {this.state.ket}
                                             <div className="table-responsive">
-                                                <Link to="barang/add" class="btn btn-secondary">Tambah barang</Link>
-                                                <DataTable
-                                                    columns={columns}
-                                                    data={data}
-                                                    pagination
-                                                    expandableRows
-                                                    expandableRowsComponent={ExpandedComponent}
+                                                <Link to="barang/add" class="btn btn-secondary btn-sm"><i className="fa fa-add"></i>Tambah Barang</Link>
+                                                {this.state.ket}
+                                                <div className="table-responsive">
+                                                    <DataTable
+                                                        columns={columns}
+                                                        data={data}
+                                                        pagination
+                                                        expandableRows
+                                                        expandableRowsComponent={ExpandedComponent}
 
-                                                />
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </>
                 }
                 />

@@ -127,7 +127,7 @@ export default function Barangform() {
                 });
         } else {
 
-            var config = {
+            const config = {
                 method: 'put',
                 url: API_URL() + 'barang/update',
                 headers: {

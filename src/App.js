@@ -16,6 +16,9 @@ import Kategori from "./components/pages/kategori/kategori";
 import Kategoriform from "./components/pages/kategori/kategori_form";
 import Suplier from "./components/pages/suplier/suplier_list";
 import Suplierform from "./components/pages/suplier/suplier_form";
+import RefTutorial from "./components/pages/tesevent/testevent";
+import Listuser from "./components/pages/user/user_list";
+import Userform from "./components/pages/user/user_form";
 
 
 const AuthContext = createContext();
@@ -38,9 +41,7 @@ function logout({ children, ...rest }) {
 
 function PrivateRoute({ component: Component, handleChildFunc, ...rest }) {
   let auth = localStorage.getItem('token');
-  // config
-
-
+  // config  
   return <Route {...rest} render={(props) => (
     auth !== null ? <Component {...props} user={auth} handleChildFunc={handleChildFunc} /> : <Redirect to="/" />
   )}
@@ -79,6 +80,12 @@ class App extends React.Component {
           <PrivateRoute path="/suplier/add" exact="suplier/add" component={Suplierform} />
           <PrivateRoute path="/suplier/edit/:id" exact="/suplier/edit/:id" component={Suplierform} /> */}
 
+          <PrivateRoute path="/event" exact="event" component={RefTutorial} />
+          {/* <PrivateRoute path="/suplier/edit/:id" exact="/suplier/edit/:id" component={Suplierform} /> */}
+
+          <PrivateRoute path="/user" exact="user" component={Listuser} />
+          <PrivateRoute path="/user/edit/:id" exact="user/edit/:id" component={Userform} />
+          <PrivateRoute path="/user/add" exact="user/add" component={Userform} />
 
         </Switch>
       </Router>

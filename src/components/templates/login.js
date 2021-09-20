@@ -113,6 +113,9 @@ export default function Login() {
                                 <div className="col-lg-10 col-xl-7 mx-auto">
                                     <b>Customer relationship management</b>
                                     <p className="text-muted mb-4">Please Login Access App.</p>
+
+                                    {Parser(gt)}
+ 
                                     <form onSubmit={LoginAction}>
                                         <div className="form-group mb-3">
                                             <input id="username" type="text" onChange={Husername} placeholder="Username" required autofocus className="form-control rounded-pill border-0 shadow-sm px-4" />
@@ -125,13 +128,11 @@ export default function Login() {
                                             <label htmlFor="customCheck1" className="custom-control-label">Remember password</label>
                                         </div>
                                         <button type="submit" className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign in</button>
-                                        <div className="text-center d-flex justify-content-between mt-4"><p>Developed  by <a href="https://ismarianto12.github.io/" className="font-italic text-muted">
-                                            <u>Ismaraianto</u></a></p></div>
+                                        <div className="text-center d-flex justify-content-between mt-4"><p>Developed  by <a href="https://ismarianto12.github.io/" target="_blank" className="font-italic text-muted">
+                                            <u>Ismarianto</u></a></p></div>
                                     </form>
 
-                                    {Parser(gt)}
-
-
+                                   
 
                                 </div>
                             </div>

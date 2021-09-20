@@ -16,9 +16,6 @@ import {
 
 // import * as ReactBootstrap from "react-bootstrap";
 
-window.jQuery = $;
-window.$ = $;
-global.jQuery = $;
 
 class Header extends React.Component {
     constructor(props) {
@@ -40,6 +37,33 @@ class Header extends React.Component {
         });
     };
 
+    jqueryCode = () => {
+
+        $(".sidebar").hover(function () {
+            $(".wrapper").hasClass("sidebar_minimize") && $(".wrapper").addClass("sidebar_minimize_hover")
+        }, function () {
+            $(".wrapper").hasClass("sidebar_minimize") && $(".wrapper").removeClass("sidebar_minimize_hover")
+        });
+
+        $(".nav-item a").on("click", function () {
+            $(this).parent().find(".collapse").hasClass("show") ? $(this).parent().removeClass("submenu").find(".collapse").removeClass('show').removeClass('collapsed') : $(this).parent().addClass("submenu").find(".collapse").addClass('show').find("data-toggle").addClass('collapsed', true).attr('aria-expanded', false);
+        });
+        // }), $(".messages-wrapper .return").on("click", function () {
+        //     $(".tab-chat").removeClass("show-chat")
+        // }), $('[data-select="checkbox"]').change(function () {
+        //     var a = $(this).attr("data-target");
+        //     $(a).prop("checked", $(this).prop("checked"));
+        // }), $(".form-group-default .form-control").focus(function () {
+        //     $(this).parent().addClass("active")
+        // }).blur(function () {
+        //     $(this).parent().removeClass("active");
+        // });
+        // });
+    }
+
+    componentDidMount() {
+        this.jqueryCode();
+    }
     render() {
         return (
 
@@ -47,6 +71,8 @@ class Header extends React.Component {
                 <Helmet>
                     <title>{this.props.title}</title>
                 </Helmet>
+                <script src="https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/assets/js/atlantis.min.js"></script>
+
                 <div className="wrapper">
                     <div className="main-header">
                         {/* Logo Header */}
@@ -272,16 +298,13 @@ class Header extends React.Component {
                                     <div className="info">
                                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true" className="collapsed">
                                             <span>
-                                                {this.state.username}
+                                                {this.state.username.toUpperCase()}
                                                 <span className="user-level">Administrator</span>
                                                 <span className="caret" />
                                             </span>
                                         </a>
                                         <div className="clearfix" />
-                                        <div className={this.state.active ? 'in collapse show' : 'in collapse'}
-                                            onClick={
-                                                this.addActiveClass
-                                            } id="collapseExample">
+                                        <div className="collapse">
                                             <ul className="nav">
                                                 <li>
                                                     <a href="#profile">
@@ -366,63 +389,185 @@ class Header extends React.Component {
                                         </span>
                                         <h4 className="text-section">Master data</h4>
                                     </li>
-
                                     <li className="nav-item">
-                                        <Link to="/suplier">
+                                        <a data-toggle="collapse" href="#base">
+                                            <i className="fa fa-cubes" />
+                                            <p>Master data</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="base">
+                                            <ul className="nav nav-collapse">
+
+                                                <li className="nav-item">
+                                                    <Link to="/suplier">
+                                                        <i className="fa fa-th-list" />
+                                                        <p>Data Supplier</p>
+                                                        <span className="badge badge-count">4</span>
+                                                    </Link>
+                                                </li>
+
+                                                <li className="nav-item">
+                                                    <Link to="/barang">
+                                                        <i className="fa fa-file" />
+                                                        <p>Master data barang</p>
+                                                        <span className="badge badge-count">5</span>
+                                                    </Link>
+                                                </li>
+
+
+                                                <li className="nav-item">
+                                                    <Link to="/kategori">
+                                                        <i className="fa fa-cube" />
+                                                        <p>Master Kategory</p>
+                                                    </Link>
+                                                </li>
+
+                                                <li className="nav-item">
+                                                    <Link to="/user">
+                                                        <i className="fa fa-th-list" />
+                                                        <p>Transaksi </p>
+                                                        <span className="badge badge-count">4</span>
+                                                    </Link>
+                                                </li>
+
+
+                                                <li className="nav-item">
+                                                    <Link to="/user">
+                                                        <i className="fa fa-th-list" />
+                                                        <p>Purchase </p>
+                                                        <span className="badge badge-count">4</span>
+                                                    </Link>
+                                                </li>
+
+                                                <li className="nav-item">
+                                                    <Link to="/user">
+                                                        <i className="fa fa-th-list" />
+                                                        <p>Report </p>
+                                                        <span className="badge badge-count">4</span>
+                                                    </Link>
+                                                </li>
+
+                                                <li className="nav-item">
+                                                    <Link to="/akuntansi">
+                                                        <i className="fa fa-th-list" />
+                                                        <p>Accouting </p>
+                                                        <span className="badge badge-count">4</span>
+                                                    </Link>
+                                                </li>
+ 
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a data-toggle="collapse" href="#sidebarLayouts">
                                             <i className="fa fa-th-list" />
-                                            <p>Data Supplier</p>
-                                            <span className="badge badge-count">4</span>
-                                        </Link>
+                                            <p>Sidebar Layouts</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="sidebarLayouts">
+                                            <ul className="nav nav-collapse">
+                                                <li>
+                                                    <a href="sidebar-style-1.html">
+                                                        <span className="sub-item">Sidebar Style 1</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="overlay-sidebar.html">
+                                                        <span className="sub-item">Overlay Sidebar</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="compact-sidebar.html">
+                                                        <span className="sub-item">Compact Sidebar</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="static-sidebar.html">
+                                                        <span className="sub-item">Static Sidebar</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="icon-menu.html">
+                                                        <span className="sub-item">Icon Menu</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
-
                                     <li className="nav-item">
-                                        <Link to="/barang">
-                                            <i className="fa fa-file" />
-                                            <p>Master data barang</p>
-                                            <span className="badge badge-count">5</span>
-                                        </Link>
+                                        <a data-toggle="collapse" href="#forms">
+                                            <i className="fa fa-pen-square" />
+                                            <p>Forms</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="forms">
+                                            <ul className="nav nav-collapse">
+                                                <li>
+                                                    <a href="forms/forms.html">
+                                                        <span className="sub-item">Basic Form</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
-
-
                                     <li className="nav-item">
-                                        <Link to="/kategori">
-                                            <i className="fa fa-cube" />
-                                            <p>Master Kategory</p>
-                                        </Link>
+                                        <a data-toggle="collapse" href="#tables">
+                                            <i className="fa fa-table" />
+                                            <p>Tables</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="tables">
+                                            <ul className="nav nav-collapse">
+                                                <li>
+                                                    <a href="tables/tables.html">
+                                                        <span className="sub-item">Basic Table</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="tables/datatables.html">
+                                                        <span className="sub-item">Datatables</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
-
                                     <li className="nav-item">
-                                        <Link to="/user">
-                                            <i className="fa fa-th-list" />
-                                            <p>Transaksi </p>
-                                            <span className="badge badge-count">4</span>
-                                        </Link>
+                                        <a data-toggle="collapse" href="#maps">
+                                            <i className="fa fa-map-marker-alt" />
+                                            <p>Maps</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="maps">
+                                            <ul className="nav nav-collapse">
+                                                <li>
+                                                    <a href="maps/jqvmap.html">
+                                                        <span className="sub-item">JQVMap</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
-
-
                                     <li className="nav-item">
-                                        <Link to="/user">
-                                            <i className="fa fa-th-list" />
-                                            <p>Purchase </p>
-                                            <span className="badge badge-count">4</span>
-                                        </Link>
+                                        <a data-toggle="collapse" href="#charts">
+                                            <i className="far fa-chart-bar" />
+                                            <p>Charts</p>
+                                            <span className="caret" />
+                                        </a>
+                                        <div className="collapse" id="charts">
+                                            <ul className="nav nav-collapse">
+                                                <li>
+                                                    <a href="charts/charts.html">
+                                                        <span className="sub-item">Chart Js</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="charts/sparkline.html">
+                                                        <span className="sub-item">Sparkline</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
-
-                                    <li className="nav-item">
-                                        <Link to="/user">
-                                            <i className="fa fa-th-list" />
-                                            <p>Report </p>
-                                            <span className="badge badge-count">4</span>
-                                        </Link>
-                                    </li>
-
-                                    <li className="nav-item">
-                                        <Link to="/akuntansi">
-                                            <i className="fa fa-th-list" />
-                                            <p>Accouting </p>
-                                            <span className="badge badge-count">4</span>
-                                        </Link>
-                                    </li> 
 
                                 </ul>
                             </div>

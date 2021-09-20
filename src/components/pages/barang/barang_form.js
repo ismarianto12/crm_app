@@ -107,7 +107,7 @@ export default function Barangform() {
         if (!id) {
 
             var config = {
-                method: 'put',
+                method: 'PUT',
                 url: API_URL() + 'barang/add',
                 headers: {
                     'Authorization': `Bearer ${token}`,

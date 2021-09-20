@@ -46,20 +46,16 @@ class Header extends React.Component {
         });
 
         $(".nav-item a").on("click", function () {
+            // $(this).attr('href','').preventDefault();
             $(this).parent().find(".collapse").hasClass("show") ? $(this).parent().removeClass("submenu").find(".collapse").removeClass('show').removeClass('collapsed') : $(this).parent().addClass("submenu").find(".collapse").addClass('show').find("data-toggle").addClass('collapsed', true).attr('aria-expanded', false);
         });
-        // }), $(".messages-wrapper .return").on("click", function () {
-        //     $(".tab-chat").removeClass("show-chat")
-        // }), $('[data-select="checkbox"]').change(function () {
-        //     var a = $(this).attr("data-target");
-        //     $(a).prop("checked", $(this).prop("checked"));
-        // }), $(".form-group-default .form-control").focus(function () {
-        //     $(this).parent().addClass("active")
-        // }).blur(function () {
-        //     $(this).parent().removeClass("active");
-        // });
-        // });
+
+        $(".sidenav-toggler").on("click", function () {
+            $('html').hasClass('nav_open toggled') ? $('html').removeClass('nav_open toggled') : $('html').addClass('nav_open toggled');
+        }); 
+       
     }
+
 
     componentDidMount() {
         this.jqueryCode();
@@ -71,7 +67,6 @@ class Header extends React.Component {
                 <Helmet>
                     <title>{this.props.title}</title>
                 </Helmet>
-                <script src="https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/assets/js/atlantis.min.js"></script>
 
                 <div className="wrapper">
                     <div className="main-header">
@@ -86,13 +81,13 @@ class Header extends React.Component {
                             </Link>
                             <button className="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon">
-                                    <i className="icon-menu" />
+                                    <i className="fa fa-list" />
                                 </span>
                             </button>
                             <button className="topbar-toggler more"><i className="icon-options-vertical" /></button>
                             <div className="nav-toggle">
                                 <button className="btn btn-toggle toggle-sidebar">
-                                    <i className="icon-menu" />
+                                    <i className="fa fa-list" />
                                 </button>
                             </div>
                         </div>
@@ -400,61 +395,59 @@ class Header extends React.Component {
 
                                                 <li className="nav-item">
                                                     <Link to="/suplier">
-                                                        <i className="fa fa-th-list" />
                                                         <p>Data Supplier</p>
-                                                        <span className="badge badge-count">4</span>
+
                                                     </Link>
                                                 </li>
 
                                                 <li className="nav-item">
                                                     <Link to="/barang">
-                                                        <i className="fa fa-file" />
                                                         <p>Master data barang</p>
-                                                        <span className="badge badge-count">5</span>
+
                                                     </Link>
                                                 </li>
 
 
                                                 <li className="nav-item">
                                                     <Link to="/kategori">
-                                                        <i className="fa fa-cube" />
+
                                                         <p>Master Kategory</p>
                                                     </Link>
                                                 </li>
 
                                                 <li className="nav-item">
                                                     <Link to="/user">
-                                                        <i className="fa fa-th-list" />
+
                                                         <p>Transaksi </p>
-                                                        <span className="badge badge-count">4</span>
+
                                                     </Link>
                                                 </li>
 
 
                                                 <li className="nav-item">
                                                     <Link to="/user">
-                                                        <i className="fa fa-th-list" />
+
                                                         <p>Purchase </p>
-                                                        <span className="badge badge-count">4</span>
+
                                                     </Link>
                                                 </li>
 
                                                 <li className="nav-item">
                                                     <Link to="/user">
-                                                        <i className="fa fa-th-list" />
+
                                                         <p>Report </p>
-                                                        <span className="badge badge-count">4</span>
+
                                                     </Link>
                                                 </li>
 
                                                 <li className="nav-item">
                                                     <Link to="/akuntansi">
-                                                        <i className="fa fa-th-list" />
+
                                                         <p>Accouting </p>
-                                                        <span className="badge badge-count">4</span>
+
                                                     </Link>
                                                 </li>
- 
+
                                             </ul>
                                         </div>
                                     </li>

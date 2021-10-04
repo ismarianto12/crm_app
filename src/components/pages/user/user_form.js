@@ -33,9 +33,9 @@ class Userform extends React.Component {
 
 
     Handler = (event) => {
-        let token = localStorage.getItem('token');
-
         event.preventDefault();
+        let token = localStorage.getItem('token');
+         
         let data = {
             email: this.state.valueform.email,
             username: this.state.valueform.username,

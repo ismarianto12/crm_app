@@ -153,7 +153,6 @@ export default function Barangform() {
         <Header title={'Ketegori Barang'} container={
             <>
                 <div className="page-inner">
-
                     <div className="row">
                         <div className="page-header">
                             <h4 className="page-title">Barang {id}.</h4>
@@ -226,8 +225,9 @@ export default function Barangform() {
                                                     <select className="form-control" {...register("kategori_id", { required: true })}>
                                                         <option value="">Pilih Kategori Barang</option>
                                                         {fdata.map((obj, index) => {
+                                                            const selected = (obj.id === this.state.kategori_id) ? 'selected' : '';
                                                             return (
-                                                                <option value={obj.id}>{obj.nama}</option>
+                                                                <option value={obj.id && selected}>{obj.nama}</option>
                                                             )
                                                         })}
                                                     </select>
@@ -236,8 +236,10 @@ export default function Barangform() {
                                                 <div className="col-md-4">
                                                     <select className="form-control" {...register("suplier_id", { required: false })}>
                                                         {suplier.map((obj, index) => {
+                                                            const selectedw = (obj.id === this.state.suplier_id) ? 'selected' : '';
+
                                                             return (
-                                                                <option value={obj.id}>{obj.nama}</option>
+                                                                <option value={obj.id && selectedw}>{obj.nama}</option>
                                                             )
                                                         })}
                                                     </select>
@@ -246,7 +248,7 @@ export default function Barangform() {
                                             <hr />
 
                                             <div className="col-md-4">
-                                                <button className="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                                                <button className="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button>
                                                 &nbsp; &nbsp;
                                                 <button className="btn btn-danger"><i class="fas fa-reset"></i>Reset</button>
                                             </div>

@@ -46,8 +46,7 @@ class Header extends React.Component {
         });
 
         $(".nav-item a").on("click", function () {
-            // $(this).attr('href','').preventDefault();
-            $(this).parent().find(".collapse").hasClass("show") ? $(this).parent().removeClass("submenu").find(".collapse").removeClass('show').removeClass('collapsed') : $(this).parent().addClass("submenu").find(".collapse").addClass('show').find("data-toggle").addClass('collapsed', true).attr('aria-expanded', false);
+             $(this).parent().find(".collapse").hasClass("show") ? $(this).parent().removeClass("submenu").find(".collapse").removeClass('show').removeClass('collapsed') : $(this).parent().addClass("submenu").find(".collapse").addClass('show').find("data-toggle").addClass('collapsed', true).attr('aria-expanded', false);
         });
 
         $(".sidenav-toggler").on("click", function () {
@@ -109,16 +108,16 @@ class Header extends React.Component {
                                 </div>
                                 <ul className="navbar-nav topbar-nav ml-md-auto align-items-center">
                                     <li className="nav-item toggle-nav-search hidden-caret">
-                                        <a className="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+                                        <Link className="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
                                             <i className="fa fa-search" />
-                                        </a>
+                                        </Link>
                                     </li>
 
                                     <li className="nav-item dropdown hidden-caret">
-                                        <a className="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <Link className="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i className="fa fa-bell" />
                                             <span className="notification">4</span>
-                                        </a>
+                                        </Link>
                                         <ul className="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
                                             <li>
                                                 <div className="dropdown-title">You have 4 new notification</div>
@@ -126,7 +125,7 @@ class Header extends React.Component {
                                             <li>
                                                 <div className="notif-scroll scrollbar-outer">
                                                     <div className="notif-center">
-                                                        <a href="#">
+                                                        <Link href="#">
                                                             <div className="notif-icon notif-primary"> <i className="fa fa-user-plus" /> </div>
                                                             <div className="notif-content">
                                                                 <span className="block">
@@ -134,8 +133,8 @@ class Header extends React.Component {
                                                                 </span>
                                                                 <span className="time">5 minutes ago</span>
                                                             </div>
-                                                        </a>
-                                                        <a href="#">
+                                                        </Link>
+                                                        <Link href="#">
                                                             <div className="notif-icon notif-success"> <i className="fa fa-comment" /> </div>
                                                             <div className="notif-content">
                                                                 <span className="block">
@@ -143,8 +142,8 @@ class Header extends React.Component {
                                                                 </span>
                                                                 <span className="time">12 minutes ago</span>
                                                             </div>
-                                                        </a>
-                                                        <a href="#">
+                                                        </Link>
+                                                        <Link href="#">
                                                             <div className="notif-img">
                                                                 <img src="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/profile.jpg" alt="Img Profile" />
                                                             </div>
@@ -154,8 +153,8 @@ class Header extends React.Component {
                                                                 </span>
                                                                 <span className="time">12 minutes ago</span>
                                                             </div>
-                                                        </a>
-                                                        <a href="#">
+                                                        </Link>
+                                                        <Link href="#">
                                                             <div className="notif-icon notif-danger"> <i className="fa fa-heart" /> </div>
                                                             <div className="notif-content">
                                                                 <span className="block">
@@ -163,19 +162,19 @@ class Header extends React.Component {
                                                                 </span>
                                                                 <span className="time">17 minutes ago</span>
                                                             </div>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a className="see-all" href="javascript:void(0);">See all notifications<i className="fa fa-angle-right" /> </a>
+                                                <Link className="see-all" href="javascript:void(0);">See all notifications<i className="fa fa-angle-right" /> </Link>
                                             </li>
                                         </ul>
                                     </li>
                                     <li className="nav-item dropdown hidden-caret">
-                                        <a className="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                                        <Link className="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
                                             <i className="fa fa-layer-group" />
-                                        </a>
+                                        </Link>
                                         <div className="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                             <div className="quick-actions-header">
                                                 <span className="title mb-1">Quick Actions</span>
@@ -184,70 +183,70 @@ class Header extends React.Component {
                                             <div className="quick-actions-scroll scrollbar-outer">
                                                 <div className="quick-actions-items">
                                                     <div className="row m-0">
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-danger rounded-circle">
                                                                     <i className="far fa-calendar-alt" />
                                                                 </div>
                                                                 <span className="text">Calendar</span>
                                                             </div>
-                                                        </a>
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        </Link>
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-warning rounded-circle">
                                                                     <i className="fa fa-map" />
                                                                 </div>
                                                                 <span className="text">Maps</span>
                                                             </div>
-                                                        </a>
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        </Link>
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-info rounded-circle">
                                                                     <i className="fa fa-file-excel" />
                                                                 </div>
                                                                 <span className="text">Reports</span>
                                                             </div>
-                                                        </a>
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        </Link>
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-success rounded-circle">
                                                                     <i className="fa fa-envelope" />
                                                                 </div>
                                                                 <span className="text">Emails</span>
                                                             </div>
-                                                        </a>
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        </Link>
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-primary rounded-circle">
                                                                     <i className="fa fa-file-invoice-dollar" />
                                                                 </div>
                                                                 <span className="text">Invoice</span>
                                                             </div>
-                                                        </a>
-                                                        <a className="col-6 col-md-4 p-0" href="#">
+                                                        </Link>
+                                                        <Link className="col-6 col-md-4 p-0" href="#">
                                                             <div className="quick-actions-item">
                                                                 <div className="avatar-item bg-secondary rounded-circle">
                                                                     <i className="fa fa-credit-card" />
                                                                 </div>
                                                                 <span className="text">Payments</span>
                                                             </div>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link quick-sidebar-toggler">
+                                        <Link href="#" className="nav-link quick-sidebar-toggler">
                                             <i className="fa fa-th" />
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item dropdown hidden-caret">
-                                        <a className="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="{this.state.sidebar ? true : false}" onClick={this.addActiveClass}>
+                                        <Link className="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="{this.state.sidebar ? true : false}" onClick={this.addActiveClass}>
                                             <p>
                                                 <h3> <Link to="/logout" className="btn-primary">Logout</Link></h3>
                                             </p>
-                                        </a>
+                                        </Link>
                                         <ul className="dropdown-menu dropdown-user animated fadeIn">
                                             <div className="dropdown-user-scroll scrollbar-outer">
                                                 <li>
@@ -255,19 +254,19 @@ class Header extends React.Component {
                                                         <div className="avatar-lg"><img src="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/profile.jpg" alt="image profile" className="avatar-img rounded" /></div>
                                                         <div className="u-text">
                                                             <h4>{this.state.username}</h4>
-                                                            <p className="text-muted">hello@example.com</p><a href="profile.html" className="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                            <p className="text-muted">hello@example.com</p><Link href="profile.html" className="btn btn-xs btn-secondary btn-sm">View Profile</Link>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div className="dropdown-divider" />
-                                                    <a className="dropdown-item" href="#">My Profile</a>
-                                                    <a className="dropdown-item" href="#">My Balance</a>
-                                                    <a className="dropdown-item" href="#">Inbox</a>
+                                                    <Link className="dropdown-item" href="#">My Profile</Link>
+                                                    <Link className="dropdown-item" href="#">My Balance</Link>
+                                                    <Link className="dropdown-item" href="#">Inbox</Link>
                                                     <div className="dropdown-divider" />
-                                                    <a className="dropdown-item" href="#">Account Setting</a>
+                                                    <Link className="dropdown-item" href="#">Account Setting</Link>
                                                     <div className="dropdown-divider" />
-                                                    <a className="dropdown-item" href="#">Logout</a>
+                                                    <Link className="dropdown-item" href="#">Logout</Link>
                                                 </li>
                                             </div>
                                         </ul>
@@ -291,30 +290,30 @@ class Header extends React.Component {
                                         <img src="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/profile.jpg" alt="..." className="avatar-img rounded-circle" />
                                     </div>
                                     <div className="info">
-                                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true" className="collapsed">
+                                        <Link data-toggle="collapse" href="#collapseExample" aria-expanded="true" className="collapsed">
                                             <span>
                                                 {this.state.username.toUpperCase()}
                                                 <span className="user-level">Administrator</span>
                                                 <span className="caret" />
                                             </span>
-                                        </a>
+                                        </Link>
                                         <div className="clearfix" />
                                         <div className="collapse">
                                             <ul className="nav">
                                                 <li>
-                                                    <a href="#profile">
+                                                    <Link href="#profile">
                                                         <span className="link-collapse">My Profile</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="#edit">
+                                                    <Link href="#edit">
                                                         <span className="link-collapse">Edit Profile</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="#settings">
+                                                    <Link href="#settings">
                                                         <span className="link-collapse">Settings</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                             </ul>
                                         </div>
@@ -331,49 +330,49 @@ class Header extends React.Component {
                                         <div className="collapse" id="dashboard">
                                             <ul className="nav nav-collapse">
                                                 <li>
-                                                    <a href="index.html">
+                                                    <Link href="index.html">
                                                         <span className="sub-item">Dashboard</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/index.html">
                                                         <span className="sub-item">Dashboard 2</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo3/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo3/index.html">
                                                         <span className="sub-item">Dashboard 3</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo4/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo4/index.html">
                                                         <span className="sub-item">Dashboard 4</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo5/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo5/index.html">
                                                         <span className="sub-item">Dashboard 5</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo6/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo6/index.html">
                                                         <span className="sub-item">Dashboard 6</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo7/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo7/index.html">
                                                         <span className="sub-item">Dashboard 7</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo8/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo8/index.html">
                                                         <span className="sub-item">Dashboard 8</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo9/index.html">
+                                                    <Link href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo9/index.html">
                                                         <span className="sub-item">Dashboard 9</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                             </ul>
                                         </div>
@@ -451,117 +450,7 @@ class Header extends React.Component {
                                             </ul>
                                         </div>
                                     </li>
-                                    <li className="nav-item">
-                                        <a data-toggle="collapse" href="#sidebarLayouts">
-                                            <i className="fa fa-th-list" />
-                                            <p>Sidebar Layouts</p>
-                                            <span className="caret" />
-                                        </a>
-                                        <div className="collapse" id="sidebarLayouts">
-                                            <ul className="nav nav-collapse">
-                                                <li>
-                                                    <a href="sidebar-style-1.html">
-                                                        <span className="sub-item">Sidebar Style 1</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="overlay-sidebar.html">
-                                                        <span className="sub-item">Overlay Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="compact-sidebar.html">
-                                                        <span className="sub-item">Compact Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="static-sidebar.html">
-                                                        <span className="sub-item">Static Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="icon-menu.html">
-                                                        <span className="sub-item">Icon Menu</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a data-toggle="collapse" href="#forms">
-                                            <i className="fa fa-pen-square" />
-                                            <p>Forms</p>
-                                            <span className="caret" />
-                                        </a>
-                                        <div className="collapse" id="forms">
-                                            <ul className="nav nav-collapse">
-                                                <li>
-                                                    <a href="forms/forms.html">
-                                                        <span className="sub-item">Basic Form</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a data-toggle="collapse" href="#tables">
-                                            <i className="fa fa-table" />
-                                            <p>Tables</p>
-                                            <span className="caret" />
-                                        </a>
-                                        <div className="collapse" id="tables">
-                                            <ul className="nav nav-collapse">
-                                                <li>
-                                                    <a href="tables/tables.html">
-                                                        <span className="sub-item">Basic Table</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="tables/datatables.html">
-                                                        <span className="sub-item">Datatables</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a data-toggle="collapse" href="#maps">
-                                            <i className="fa fa-map-marker-alt" />
-                                            <p>Maps</p>
-                                            <span className="caret" />
-                                        </a>
-                                        <div className="collapse" id="maps">
-                                            <ul className="nav nav-collapse">
-                                                <li>
-                                                    <a href="maps/jqvmap.html">
-                                                        <span className="sub-item">JQVMap</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a data-toggle="collapse" href="#charts">
-                                            <i className="far fa-chart-bar" />
-                                            <p>Charts</p>
-                                            <span className="caret" />
-                                        </a>
-                                        <div className="collapse" id="charts">
-                                            <ul className="nav nav-collapse">
-                                                <li>
-                                                    <a href="charts/charts.html">
-                                                        <span className="sub-item">Chart Js</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="charts/sparkline.html">
-                                                        <span className="sub-item">Sparkline</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-
+                             
                                 </ul>
                             </div>
                         </div>
@@ -574,37 +463,37 @@ class Header extends React.Component {
                                 <nav className="pull-left">
                                     <ul className="nav">
                                         <li className="nav-item">
-                                            <a className="nav-link" href="http://www.themekita.com/">
+                                            <Link className="nav-link" href="http://www.themekita.com/">
                                                 ThemeKita
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link" href="#">
+                                            <Link className="nav-link" href="#">
                                                 Help
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link" href="#">
+                                            <Link className="nav-link" href="#">
                                                 Licenses
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </nav>
                                 <div className="copyright ml-auto">
-                                    2018, made with <i className="fa fa-heart heart text-danger" /> by <a href="http://www.themekita.com/">ThemeKita</a>
+                                    2018, made with <i className="fa fa-heart heart text-danger" /> by <Link href="http://www.themekita.com/">ThemeKita</Link>
                                 </div>
                             </div>
                         </footer>
                     </div>
                     <div className="quick-sidebar">
-                        <a href="#" className="close-quick-sidebar">
+                        <Link href="#" className="close-quick-sidebar">
                             <i className="flaticon-cross" />
-                        </a>
+                        </Link>
                         <div className="quick-sidebar-wrapper">
                             <ul className="nav nav-tabs nav-line nav-color-secondary" role="tablist">
-                                <li className="nav-item"> <a className="nav-link active show" data-toggle="tab" href="#messages" role="tab" aria-selected="true">Messages</a> </li>
-                                <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#tasks" role="tab" aria-selected="false">Tasks</a> </li>
-                                <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#settings" role="tab" aria-selected="false">Settings</a> </li>
+                                <li className="nav-item"> <Link className="nav-link active show" data-toggle="tab" href="#messages" role="tab" aria-selected="true">Messages</Link> </li>
+                                <li className="nav-item"> <Link className="nav-link" data-toggle="tab" href="#tasks" role="tab" aria-selected="false">Tasks</Link> </li>
+                                <li className="nav-item"> <Link className="nav-link" data-toggle="tab" href="#settings" role="tab" aria-selected="false">Settings</Link> </li>
                             </ul>
                             <div className="tab-content mt-3">
                                 <div className="tab-chat tab-pane fade show active" id="messages" role="tabpanel">
@@ -633,7 +522,7 @@ class Header extends React.Component {
                                                     <span className="category-title">Recent</span>
                                                     <div className="contact-list contact-list-recent">
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-online">
                                                                     <img src="../assets/img/jm_denis.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -641,10 +530,10 @@ class Header extends React.Component {
                                                                     <span className="name">Jimmy Denis</span>
                                                                     <span className="message">How are you ?</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-offline">
                                                                     <img src="../assets/img/chadengle.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -652,10 +541,10 @@ class Header extends React.Component {
                                                                     <span className="name">Chad</span>
                                                                     <span className="message">Ok, Thanks !</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-offline">
                                                                     <img src="../assets/img/mlane.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -663,13 +552,13 @@ class Header extends React.Component {
                                                                     <span className="name">John Doe</span>
                                                                     <span className="message">Ready for the meeting today with...</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <span className="category-title">Other Contacts</span>
                                                     <div className="contact-list">
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-online">
                                                                     <img src="../assets/img/jm_denis.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -677,10 +566,10 @@ class Header extends React.Component {
                                                                     <span className="name">Jimmy Denis</span>
                                                                     <span className="status">Online</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-offline">
                                                                     <img src="../assets/img/chadengle.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -688,10 +577,10 @@ class Header extends React.Component {
                                                                     <span className="name">Chad</span>
                                                                     <span className="status">Active 2h ago</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                         <div className="user">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <div className="avatar avatar-away">
                                                                     <img src="../assets/img/talha.jpg" alt="..." className="avatar-img rounded-circle border border-white" />
                                                                 </div>
@@ -699,7 +588,7 @@ class Header extends React.Component {
                                                                     <span className="name">Talha</span>
                                                                     <span className="status">Away</span>
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -806,9 +695,9 @@ class Header extends React.Component {
                                                 <input type="text" placeholder="Type here" className="form-control input-pill input-solid message-input" />
                                             </div>
                                             <div className="messages-form-tool">
-                                                <a href="#" className="attachment">
+                                                <Link href="#" className="attachment">
                                                     <i className="flaticon-file" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -823,9 +712,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" defaultChecked className="custom-control-input" /><span className="custom-control-label">Planning new project structure</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -833,9 +722,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Create the main structure							</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -843,9 +732,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Add new Post</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -853,9 +742,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Finalise the design proposal</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -866,9 +755,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Initialize the project							</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -876,9 +765,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Create the main structure							</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -886,9 +775,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span className="custom-control-label">Updates changes to GitHub							</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
@@ -896,9 +785,9 @@ class Header extends React.Component {
                                                         <label className="custom-checkbox custom-control checkbox-secondary">
                                                             <input type="checkbox" className="custom-control-input" /><span title="This task is too long to be displayed in a normal space!" className="custom-control-label">This task is too long to be displayed in a normal space!				</span>
                                                             <span className="task-action">
-                                                                <a href="#" className="link text-danger">
+                                                                <Link href="#" className="link text-danger">
                                                                     <i className="flaticon-interface-5" />
-                                                                </a>
+                                                                </Link>
                                                             </span>
                                                         </label>
                                                     </li>
